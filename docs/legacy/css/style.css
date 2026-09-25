@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F6F9FF;
+}
+header{
+    background-color:#768eef;
+    color:white;
+}
+footer{
+    background-color:#8290c8;
+    color:white;
+    text-align:center;
+    padding:10px;
+}
+
+.foto-perfil{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.cv{
+    font-family: 'times', sans-serif;
+    background-color: #8f8f8f;
+    padding: 20px;
+    
+}
+.contenedor{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.card-1,.card-2,.card-3{
+    .img-1,.img-2,.img-3{
+    width: 50px;
+    height: 50px;
+    border-radius: 80%;
+    shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    flex:1;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    text-align: center;
+
+}
+.nav-link{
+    color:rgb(255, 255, 255);
+    text-decoration:none;
+    border: 1px solid rgb(0, 0, 0);
+    shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex:1;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 15px;
+
+}
+.portafolio,.contacto,.repositorio{
+    text-align: center;
+}
+.menu-superior{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    list-style-type: none;  
+  padding: 0;             
+  margin: 0;
+}
