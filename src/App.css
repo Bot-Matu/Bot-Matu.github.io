@@ -8,6 +8,7 @@
   --texto: #14231b;
   --texto-suave: #55645b;
   --borde: #dbe5df;
+  --texto-boton: #ffffff;
 
   font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 17px;
@@ -15,23 +16,25 @@
   color: var(--texto);
   background: var(--fondo);
   min-height: 100vh;
+  border-top: 3px solid var(--verde);
 }
 
 .pagina[data-tema='oscuro'] {
   --verde: #3ddc84;
   --verde-fuerte: #7beaaa;
   --verde-suave: #14301f;
-  --fondo: #0d1511;
-  --superficie: #15201a;
+  --fondo: #0a0f0c;
+  --superficie: #111a14;
   --texto: #e8f1ec;
   --texto-suave: #9bb0a4;
-  --borde: #243529;
+  --borde: #223329;
+  --texto-boton: #07130c;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-family: 'Bricolage Grotesque', system-ui, sans-serif;
   margin: 0;
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
 a {
@@ -40,9 +43,27 @@ a {
 
 a:focus-visible,
 button:focus-visible,
-input:focus-visible {
+input:focus-visible,
+textarea:focus-visible {
   outline: 3px solid var(--verde);
   outline-offset: 2px;
+}
+
+.texto-suave {
+  color: var(--texto-suave);
+}
+
+.texto-verde {
+  margin: 6px 0 0;
+  color: var(--verde-fuerte);
+  font-weight: 500;
+}
+
+.etiqueta {
+  margin: 0 0 12px;
+  color: var(--verde-fuerte);
+  font-size: 14px;
+  font-weight: 500;
 }
 
 /* ---------- Menú ---------- */
@@ -53,6 +74,8 @@ input:focus-visible {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
   padding: 14px 24px;
   background: var(--fondo);
   border-bottom: 1px solid var(--borde);
@@ -61,7 +84,7 @@ input:focus-visible {
 .menu-logo {
   font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 18px;
   text-decoration: none;
   color: var(--texto);
 }
@@ -69,13 +92,14 @@ input:focus-visible {
 .menu nav {
   display: flex;
   align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 18px;
 }
 
 .menu nav a {
   color: var(--texto);
   text-decoration: none;
-  font-weight: 500;
+  font-size: 15px;
 }
 
 .menu nav a:hover {
@@ -86,14 +110,14 @@ input:focus-visible {
   font: inherit;
   font-size: 14px;
   padding: 6px 14px;
-  border-radius: 999px;
+  border-radius: 8px;
   border: 1px solid var(--borde);
   background: var(--superficie);
   color: var(--texto);
   cursor: pointer;
 }
 
-/* ---------- Secciones ---------- */
+/* ---------- Estructura general ---------- */
 main {
   max-width: 960px;
   margin: 0 auto;
@@ -101,70 +125,48 @@ main {
 }
 
 .seccion {
-  padding: 64px 0 24px;
+  padding: 64px 0;
+  border-top: 1px solid var(--borde);
 }
 
 .seccion h2 {
-  font-size: 36px;
-  margin-bottom: 24px;
+  font-size: 32px;
+  margin-bottom: 16px;
 }
 
-/* ---------- Hero ---------- */
+.subtitulo {
+  margin: 36px 0 16px;
+  font-size: 18px;
+}
+
+/* ---------- Portada ---------- */
 .hero {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 48px;
-  padding: 72px 0 24px;
-}
-
-.hero-etiqueta {
-  display: inline-block;
-  margin: 0 0 16px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: var(--verde-suave);
-  color: var(--verde-fuerte);
-  font-weight: 500;
-  font-size: 15px;
+  padding: 88px 0 72px;
 }
 
 .hero h1 {
-  font-size: clamp(44px, 8vw, 80px);
+  font-size: clamp(44px, 8vw, 76px);
   font-weight: 800;
   letter-spacing: -0.03em;
+  margin-bottom: 20px;
 }
 
 .hero-desc {
-  max-width: 48ch;
-  margin: 20px 0 28px;
+  max-width: 52ch;
+  margin: 0 0 28px;
   color: var(--texto-suave);
   font-size: 19px;
 }
 
-.hero-botones {
+.botones {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  margin-top: 28px;
 }
 
-.hero-monograma {
-  width: 220px;
-  height: 220px;
-  border-radius: 56px;
-  display: grid;
-  place-items: center;
-  background: var(--verde);
-  color: #fff;
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-weight: 800;
-  font-size: 88px;
-  letter-spacing: -0.04em;
-  transform: rotate(-4deg);
-}
-
-.pagina[data-tema='oscuro'] .hero-monograma {
-  color: #0d1511;
+.hero .botones {
+  margin-top: 0;
 }
 
 /* ---------- Botones ---------- */
@@ -172,8 +174,9 @@ main {
   display: inline-block;
   font: inherit;
   font-weight: 700;
-  padding: 12px 24px;
-  border-radius: 12px;
+  font-size: 15px;
+  padding: 10px 22px;
+  border-radius: 10px;
   border: 2px solid var(--verde);
   text-decoration: none;
   cursor: pointer;
@@ -181,21 +184,13 @@ main {
 
 .btn-principal {
   background: var(--verde);
-  color: #fff;
-}
-
-.pagina[data-tema='oscuro'] .btn-principal {
-  color: #0d1511;
+  color: var(--texto-boton);
 }
 
 .btn-principal:hover {
   background: var(--verde-fuerte);
   border-color: var(--verde-fuerte);
-  color: #fff;
-}
-
-.pagina[data-tema='oscuro'] .btn-principal:hover {
-  color: #0d1511;
+  color: var(--texto-boton);
 }
 
 .btn-borde {
@@ -207,74 +202,137 @@ main {
   background: var(--verde-suave);
 }
 
-/* ---------- Tarjetas CV ---------- */
+/* ---------- Sobre mí ---------- */
+.sobre-mi {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--verde);
+  color: var(--texto-boton);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 34px;
+}
+
+.sobre-mi p {
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* ---------- Tarjetas ---------- */
 .tarjetas {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.tarjetas-dos {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .tarjeta {
-  padding: 28px;
+  padding: 24px;
   background: var(--superficie);
   border: 1px solid var(--borde);
-  border-left: 6px solid var(--verde);
-  border-radius: 16px;
+  border-radius: 14px;
 }
 
-.tarjeta h3 {
-  font-size: 22px;
+.tarjeta h4 {
+  font-size: 20px;
   margin-bottom: 10px;
 }
 
 .tarjeta p {
   margin: 0;
   color: var(--texto-suave);
+  font-size: 16px;
 }
 
-/* ---------- Contacto ---------- */
-.contacto-texto {
-  margin: 0 0 20px;
-  color: var(--texto-suave);
+.tarjeta .texto-verde {
+  color: var(--verde-fuerte);
 }
 
-.contacto-lista {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 32px;
-  display: grid;
-  gap: 10px;
-}
-
-.contacto-lista span {
+.link {
   display: inline-block;
-  min-width: 84px;
+  margin-top: 16px;
   font-weight: 700;
 }
 
+/* ---------- Aptitudes (etiquetas) ---------- */
+.grupos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.grupo-titulo {
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: var(--texto-suave);
+  font-weight: 500;
+}
+
+.chips {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chips li {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto);
+  font-size: 14px;
+}
+
+.chips-chicos {
+  margin-top: 16px;
+}
+
+.chips-chicos li {
+  background: var(--verde-suave);
+  border-color: transparent;
+  color: var(--verde-fuerte);
+}
+
+/* ---------- Contacto ---------- */
 .formulario {
   max-width: 480px;
   display: grid;
   gap: 16px;
-  padding: 28px;
-  background: var(--superficie);
-  border: 1px solid var(--borde);
-  border-radius: 16px;
+  margin-top: 24px;
 }
 
 .formulario label {
   display: grid;
   gap: 6px;
   font-weight: 500;
+  font-size: 15px;
 }
 
-.formulario input {
+.formulario input,
+.formulario textarea {
   font: inherit;
   padding: 10px 14px;
   border-radius: 10px;
   border: 1px solid var(--borde);
-  background: var(--fondo);
+  background: var(--superficie);
   color: var(--texto);
+  resize: vertical;
 }
 
 .formulario .btn {
@@ -289,52 +347,29 @@ main {
 
 /* ---------- Pie ---------- */
 .pie {
-  margin-top: 72px;
+  max-width: 960px;
+  margin: 0 auto;
   padding: 24px;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
   color: var(--texto-suave);
+  font-size: 14px;
   border-top: 1px solid var(--borde);
 }
 
 /* ---------- Celular ---------- */
 @media (max-width: 700px) {
   .hero {
-    grid-template-columns: 1fr;
-    padding-top: 40px;
+    padding: 56px 0 48px;
   }
 
-  .hero-monograma {
-    width: 140px;
-    height: 140px;
-    border-radius: 36px;
-    font-size: 56px;
-    order: -1;
+  .sobre-mi {
+    flex-direction: column;
   }
 
   .menu nav {
     gap: 12px;
   }
-  /* ---------- Habilidades ---------- */
-.chips {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.chips li {
-  padding: 8px 16px;
-  border-radius: 999px;
-  background: var(--verde-suave);
-  color: var(--verde-fuerte);
-  font-weight: 500;
-}
-
-.tarjeta a {
-  display: inline-block;
-  margin-top: 12px;
-  font-weight: 700;
-}
 }
